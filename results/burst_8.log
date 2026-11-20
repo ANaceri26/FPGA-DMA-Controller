@@ -1,0 +1,2 @@
+PASS DMA: 50 randomized copies, 12933 shared-bus beats, 6646 CPU completions + fault/reset tests
+sim/tb_dma.sv:107: $finish called at 347001000 (1ps)

@@ -1,0 +1,860 @@
+
+-- Running command `read_verilog -sv rtl/dma_controller.sv; hierarchy -check -top dma_controller; synth -top dma_controller -noabc; check -assert; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/dma_controller.sv
+Parsing SystemVerilog input from `rtl/dma_controller.sv' to AST representation.
+Generating RTLIL representation for module `\dma_controller'.
+Warning: Replacing memory \buffer with list of registers. See rtl/dma_controller.sv:80
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \dma_controller
+
+2.2. Analyzing design hierarchy..
+Top module:  \dma_controller
+Removed 0 unused modules.
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \dma_controller
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \dma_controller
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed 1 dead cases from process $proc$rtl/dma_controller.sv:0$77 in module dma_controller.
+Marked 1 switch rules as full_case in process $proc$rtl/dma_controller.sv:0$77 in module dma_controller.
+Marked 12 switch rules as full_case in process $proc$rtl/dma_controller.sv:49$23 in module dma_controller.
+Marked 1 switch rules as full_case in process $proc$rtl/dma_controller.sv:35$22 in module dma_controller.
+Removed a total of 1 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 4 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~22 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\dma_controller.$proc$rtl/dma_controller.sv:0$77'.
+     1/1: $1$mem2reg_rd$\buffer$rtl/dma_controller.sv:34$1_DATA[31:0]$79
+Creating decoders for process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+     1/31: $5$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR[1:0]$57
+     2/31: $5$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA[31:0]$58
+     3/31: $4$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA[31:0]$55
+     4/31: $4$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR[1:0]$54
+     5/31: $3$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA[31:0]$53
+     6/31: $3$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR[1:0]$52
+     7/31: $2$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA[31:0]$35
+     8/31: $2$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR[1:0]$34
+     9/31: $1$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA[31:0]$28
+    10/31: $1$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR[1:0]$27
+    11/31: $0\buffer[3][31:0]
+    12/31: $0\buffer[2][31:0]
+    13/31: $0\buffer[1][31:0]
+    14/31: $0\buffer[0][31:0]
+    15/31: $0\error_code[2:0]
+    16/31: $0\irq_en[0:0]
+    17/31: $0\error[0:0]
+    18/31: $0\done[0:0]
+    19/31: $0\group_size[31:0]
+    20/31: $0\index[31:0]
+    21/31: $0\active_timeout[31:0]
+    22/31: $0\watchdog[31:0]
+    23/31: $0\completed[31:0]
+    24/31: $0\remaining[31:0]
+    25/31: $0\dst[31:0]
+    26/31: $0\timeout_cfg[31:0]
+    27/31: $0\len_cfg[31:0]
+    28/31: $0\dst_cfg[31:0]
+    29/31: $0\src_cfg[31:0]
+    30/31: $0\state[1:0]
+    31/31: $0\src[31:0]
+Creating decoders for process `\dma_controller.$proc$rtl/dma_controller.sv:35$22'.
+     1/1: $1\reg_rdata[31:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\dma_controller.$mem2reg_rd$\buffer$rtl/dma_controller.sv:34$1_DATA' from process `\dma_controller.$proc$rtl/dma_controller.sv:0$77'.
+No latch inferred for signal `\dma_controller.\reg_rdata' from process `\dma_controller.$proc$rtl/dma_controller.sv:35$22'.
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\dma_controller.\src' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$500' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\state' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$501' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\src_cfg' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$502' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\dst_cfg' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$503' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\len_cfg' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$504' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\timeout_cfg' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$505' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\dst' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$506' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\remaining' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$507' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\completed' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$508' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\watchdog' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$509' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\active_timeout' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$510' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\index' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$511' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\group_size' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$512' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\done' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$513' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\error' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$514' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\irq_en' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$515' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\error_code' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$516' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.\buffer[0]' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $dff cell `$procdff$519' with positive edge clock.
+Creating register for signal `\dma_controller.\buffer[1]' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $dff cell `$procdff$522' with positive edge clock.
+Creating register for signal `\dma_controller.\buffer[2]' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $dff cell `$procdff$525' with positive edge clock.
+Creating register for signal `\dma_controller.\buffer[3]' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $dff cell `$procdff$528' with positive edge clock.
+Creating register for signal `\dma_controller.$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_ADDR' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$529' with positive edge clock and negative level reset.
+Creating register for signal `\dma_controller.$mem2reg_wr$\buffer$rtl/dma_controller.sv:80$2_DATA' using process `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+  created $adff cell `$procdff$530' with positive edge clock and negative level reset.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\dma_controller.$proc$rtl/dma_controller.sv:0$77'.
+Removing empty process `dma_controller.$proc$rtl/dma_controller.sv:0$77'.
+Found and cleaned up 20 empty switches in `\dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+Removing empty process `dma_controller.$proc$rtl/dma_controller.sv:49$23'.
+Found and cleaned up 1 empty switch in `\dma_controller.$proc$rtl/dma_controller.sv:35$22'.
+Removing empty process `dma_controller.$proc$rtl/dma_controller.sv:35$22'.
+Cleaned up 22 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~36 debug messages>
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 24 unused cells and 212 unused wires.
+<suppressed ~25 debug messages>
+
+3.5. Executing CHECK pass (checking for obvious problems).
+Checking module dma_controller...
+Found and reported 0 problems.
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~27 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+3.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 17 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.6.16. Finished OPT passes. (There is nothing left to do.)
+
+3.7. Executing FSM pass (extract and optimize FSM).
+
+3.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Not marking dma_controller.error_code as FSM state register:
+    Users of register don't seem to benefit from recoding.
+Not marking dma_controller.state as FSM state register:
+    Users of register don't seem to benefit from recoding.
+
+3.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+3.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+3.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+3.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+3.8. Executing OPT pass (performing simple optimizations).
+
+3.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~29 debug messages>
+
+3.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$528 ($dff) from module dma_controller (D = \m_rdata, Q = \buffer[3]).
+Adding EN signal on $procdff$525 ($dff) from module dma_controller (D = \m_rdata, Q = \buffer[2]).
+Adding EN signal on $procdff$522 ($dff) from module dma_controller (D = \m_rdata, Q = \buffer[1]).
+Adding EN signal on $procdff$519 ($dff) from module dma_controller (D = \m_rdata, Q = \buffer[0]).
+Adding EN signal on $procdff$515 ($adff) from module dma_controller (D = \reg_wdata [0], Q = \irq_en).
+Adding EN signal on $procdff$512 ($adff) from module dma_controller (D = $0\group_size[31:0], Q = \group_size).
+Adding EN signal on $procdff$511 ($adff) from module dma_controller (D = $0\index[31:0], Q = \index).
+Adding EN signal on $procdff$510 ($adff) from module dma_controller (D = \timeout_cfg, Q = \active_timeout).
+Adding EN signal on $procdff$509 ($adff) from module dma_controller (D = $0\watchdog[31:0], Q = \watchdog).
+Adding EN signal on $procdff$508 ($adff) from module dma_controller (D = $0\completed[31:0], Q = \completed).
+Adding EN signal on $procdff$507 ($adff) from module dma_controller (D = $0\remaining[31:0], Q = \remaining).
+Adding EN signal on $procdff$506 ($adff) from module dma_controller (D = $0\dst[31:0], Q = \dst).
+Adding EN signal on $procdff$505 ($adff) from module dma_controller (D = $ternary$rtl/dma_controller.sv:64$45_Y, Q = \timeout_cfg).
+Adding EN signal on $procdff$504 ($adff) from module dma_controller (D = \reg_wdata, Q = \len_cfg).
+Adding EN signal on $procdff$503 ($adff) from module dma_controller (D = \reg_wdata, Q = \dst_cfg).
+Adding EN signal on $procdff$502 ($adff) from module dma_controller (D = \reg_wdata, Q = \src_cfg).
+Adding EN signal on $procdff$501 ($adff) from module dma_controller (D = $0\state[1:0], Q = \state).
+Adding EN signal on $procdff$500 ($adff) from module dma_controller (D = $0\src[31:0], Q = \src).
+
+3.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 37 unused cells and 37 unused wires.
+<suppressed ~38 debug messages>
+
+3.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~8 debug messages>
+
+3.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~20 debug messages>
+
+3.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~120 debug messages>
+Removed a total of 40 cells.
+
+3.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 40 unused wires.
+<suppressed ~1 debug messages>
+
+3.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.8.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+3.8.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.8.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.8.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.8.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.8.23. Finished OPT passes. (There is nothing left to do.)
+
+3.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 3 bits (of 35) from port A of cell dma_controller.$add$rtl/dma_controller.sv:24$5 ($add).
+Removed top 1 bits (of 35) from port B of cell dma_controller.$add$rtl/dma_controller.sv:24$5 ($add).
+Removed top 3 bits (of 35) from port A of cell dma_controller.$add$rtl/dma_controller.sv:25$6 ($add).
+Removed top 1 bits (of 35) from port B of cell dma_controller.$add$rtl/dma_controller.sv:25$6 ($add).
+Removed top 3 bits (of 35) from port A of cell dma_controller.$lt$rtl/dma_controller.sv:26$7 ($lt).
+Removed top 3 bits (of 35) from port A of cell dma_controller.$lt$rtl/dma_controller.sv:26$8 ($lt).
+Removed top 2 bits (of 35) from port B of cell dma_controller.$gt$rtl/dma_controller.sv:28$13 ($gt).
+Removed top 2 bits (of 35) from port B of cell dma_controller.$gt$rtl/dma_controller.sv:28$15 ($gt).
+Removed top 5 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:55$29 ($eq).
+Removed top 3 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:59$31 ($eq).
+Removed top 4 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:61$36 ($eq).
+Removed top 4 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:62$38 ($eq).
+Removed top 3 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:63$40 ($eq).
+Removed top 3 bits (of 8) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:64$42 ($eq).
+Removed top 29 bits (of 32) from port B of cell dma_controller.$lt$rtl/dma_controller.sv:72$50 ($lt).
+Removed top 1 bits (of 2) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:79$56 ($eq).
+Removed top 29 bits (of 32) from port B of cell dma_controller.$add$rtl/dma_controller.sv:80$59 ($add).
+Removed top 30 bits (of 32) from port B of cell dma_controller.$sub$rtl/dma_controller.sv:81$60 ($sub).
+Removed top 30 bits (of 32) from port B of cell dma_controller.$add$rtl/dma_controller.sv:82$62 ($add).
+Removed top 29 bits (of 32) from port B of cell dma_controller.$add$rtl/dma_controller.sv:84$63 ($add).
+Removed top 31 bits (of 32) from port B of cell dma_controller.$eq$rtl/dma_controller.sv:85$66 ($eq).
+Removed top 31 bits (of 32) from port B of cell dma_controller.$sub$rtl/dma_controller.sv:88$69 ($sub).
+Removed top 29 bits (of 32) from port B of cell dma_controller.$lt$rtl/dma_controller.sv:88$70 ($lt).
+Removed top 1 bits (of 2) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$560 ($ne).
+Removed top 1 bits (of 2) from port B of cell dma_controller.$procmux$179_CMP0 ($eq).
+Removed top 2 bits (of 3) from mux cell dma_controller.$procmux$222 ($mux).
+Removed top 2 bits (of 3) from mux cell dma_controller.$procmux$225 ($mux).
+Removed top 2 bits (of 4) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$682 ($ne).
+Removed top 1 bits (of 4) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$554 ($ne).
+Removed top 1 bits (of 5) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$669 ($ne).
+Removed top 2 bits (of 3) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$665 ($ne).
+Removed top 2 bits (of 8) from port B of cell dma_controller.$procmux$492_CMP0 ($eq).
+Removed top 3 bits (of 8) from port B of cell dma_controller.$procmux$495_CMP0 ($eq).
+Removed top 4 bits (of 6) from port B of cell dma_controller.$auto$opt_dff.cc:195:make_patterns_logic$562 ($ne).
+Removed top 2 bits (of 3) from wire dma_controller.$procmux$222_Y.
+
+3.10. Executing PEEPOPT pass (run peephole optimizers).
+
+3.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module dma_controller:
+  creating $macc model for $add$rtl/dma_controller.sv:24$5 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:25$6 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:80$59 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:82$62 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:84$63 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:84$65 ($add).
+  creating $macc model for $add$rtl/dma_controller.sv:93$76 ($add).
+  creating $macc model for $sub$rtl/dma_controller.sv:81$60 ($sub).
+  creating $macc model for $sub$rtl/dma_controller.sv:84$64 ($sub).
+  creating $macc model for $sub$rtl/dma_controller.sv:88$69 ($sub).
+  creating $macc model for $sub$rtl/dma_controller.sv:91$74 ($sub).
+  creating $alu model for $macc $sub$rtl/dma_controller.sv:91$74.
+  creating $alu model for $macc $sub$rtl/dma_controller.sv:88$69.
+  creating $alu model for $macc $sub$rtl/dma_controller.sv:84$64.
+  creating $alu model for $macc $sub$rtl/dma_controller.sv:81$60.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:93$76.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:84$65.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:84$63.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:82$62.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:80$59.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:25$6.
+  creating $alu model for $macc $add$rtl/dma_controller.sv:24$5.
+  creating $alu model for $ge$rtl/dma_controller.sv:91$75 ($ge): new $alu
+  creating $alu model for $gt$rtl/dma_controller.sv:28$13 ($gt): new $alu
+  creating $alu model for $gt$rtl/dma_controller.sv:28$15 ($gt): new $alu
+  creating $alu model for $lt$rtl/dma_controller.sv:26$7 ($lt): new $alu
+  creating $alu model for $lt$rtl/dma_controller.sv:26$8 ($lt): new $alu
+  creating $alu model for $lt$rtl/dma_controller.sv:72$50 ($lt): new $alu
+  creating $alu model for $lt$rtl/dma_controller.sv:88$70 ($lt): new $alu
+  creating $alu cell for $lt$rtl/dma_controller.sv:88$70: $auto$alumacc.cc:485:replace_alu$695
+  creating $alu cell for $lt$rtl/dma_controller.sv:72$50: $auto$alumacc.cc:485:replace_alu$706
+  creating $alu cell for $lt$rtl/dma_controller.sv:26$8: $auto$alumacc.cc:485:replace_alu$717
+  creating $alu cell for $lt$rtl/dma_controller.sv:26$7: $auto$alumacc.cc:485:replace_alu$722
+  creating $alu cell for $gt$rtl/dma_controller.sv:28$15: $auto$alumacc.cc:485:replace_alu$727
+  creating $alu cell for $gt$rtl/dma_controller.sv:28$13: $auto$alumacc.cc:485:replace_alu$732
+  creating $alu cell for $ge$rtl/dma_controller.sv:91$75: $auto$alumacc.cc:485:replace_alu$737
+  creating $alu cell for $add$rtl/dma_controller.sv:24$5: $auto$alumacc.cc:485:replace_alu$746
+  creating $alu cell for $add$rtl/dma_controller.sv:25$6: $auto$alumacc.cc:485:replace_alu$749
+  creating $alu cell for $add$rtl/dma_controller.sv:80$59: $auto$alumacc.cc:485:replace_alu$752
+  creating $alu cell for $add$rtl/dma_controller.sv:82$62: $auto$alumacc.cc:485:replace_alu$755
+  creating $alu cell for $add$rtl/dma_controller.sv:84$63: $auto$alumacc.cc:485:replace_alu$758
+  creating $alu cell for $add$rtl/dma_controller.sv:84$65: $auto$alumacc.cc:485:replace_alu$761
+  creating $alu cell for $add$rtl/dma_controller.sv:93$76: $auto$alumacc.cc:485:replace_alu$764
+  creating $alu cell for $sub$rtl/dma_controller.sv:81$60: $auto$alumacc.cc:485:replace_alu$767
+  creating $alu cell for $sub$rtl/dma_controller.sv:84$64: $auto$alumacc.cc:485:replace_alu$770
+  creating $alu cell for $sub$rtl/dma_controller.sv:88$69: $auto$alumacc.cc:485:replace_alu$773
+  creating $alu cell for $sub$rtl/dma_controller.sv:91$74: $auto$alumacc.cc:485:replace_alu$776
+  created 18 $alu and 0 $macc cells.
+
+3.13. Executing SHARE pass (SAT-based resource sharing).
+
+3.14. Executing OPT pass (performing simple optimizations).
+
+3.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~2 debug messages>
+
+3.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~5 debug messages>
+Removed a total of 1 cells.
+
+3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+3.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 2 unused cells and 14 unused wires.
+<suppressed ~3 debug messages>
+
+3.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.14.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.14.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+3.14.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.14.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.14.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.14.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.14.16. Finished OPT passes. (There is nothing left to do.)
+
+3.15. Executing MEMORY pass.
+
+3.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+3.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+3.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+3.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+3.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+3.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+3.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+3.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.17. Executing OPT pass (performing simple optimizations).
+
+3.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~53 debug messages>
+
+3.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $auto$ff.cc:266:slice$622 ($adffe) from module dma_controller (D = $0\dst[31:0] [1:0], Q = \dst [1:0]).
+Adding EN signal on $auto$ff.cc:266:slice$672 ($adffe) from module dma_controller (D = $0\src[31:0] [1:0], Q = \src [1:0]).
+
+3.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 42 unused wires.
+<suppressed ~1 debug messages>
+
+3.17.5. Rerunning OPT passes. (Removed registers in this run.)
+
+3.17.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~2 debug messages>
+
+3.17.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~6 debug messages>
+Removed a total of 2 cells.
+
+3.17.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.17.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+3.17.10. Finished fast OPT passes.
+
+3.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+3.19. Executing OPT pass (performing simple optimizations).
+
+3.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~21 debug messages>
+
+3.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+    New input vector for $reduce_and cell $auto$opt_dff.cc:220:make_patterns_logic$789: { $auto$opt_dff.cc:194:make_patterns_logic$567 $auto$opt_dff.cc:194:make_patterns_logic$780 $auto$opt_dff.cc:194:make_patterns_logic$553 $auto$opt_dff.cc:194:make_patterns_logic$681 $auto$opt_dff.cc:194:make_patterns_logic$559 $auto$opt_dff.cc:194:make_patterns_logic$555 $auto$opt_dff.cc:194:make_patterns_logic$557 }
+    New input vector for $reduce_and cell $auto$opt_dff.cc:220:make_patterns_logic$783: { $auto$opt_dff.cc:194:make_patterns_logic$565 $auto$opt_dff.cc:194:make_patterns_logic$567 $auto$opt_dff.cc:194:make_patterns_logic$780 $auto$opt_dff.cc:194:make_patterns_logic$553 $auto$opt_dff.cc:194:make_patterns_logic$559 $auto$opt_dff.cc:194:make_patterns_logic$555 $auto$opt_dff.cc:194:make_patterns_logic$557 }
+    Consolidated identical input bits for $mux cell $procmux$446:
+      Old ports: A=2'01, B=2'00, Y=$procmux$446_Y
+      New ports: A=1'1, B=1'0, Y=$procmux$446_Y [0]
+      New connections: $procmux$446_Y [1] = 1'0
+  Optimizing cells in module \dma_controller.
+Performed a total of 3 changes.
+
+3.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.19.6. Executing OPT_SHARE pass.
+    Found cells that share an operand and can be merged by moving the $mux $procmux$244 in front of them:
+        $procmux$242
+        $procmux$238
+
+3.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+3.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~2 debug messages>
+
+3.19.10. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.11. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+3.19.12. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.19.13. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.19.14. Executing OPT_SHARE pass.
+
+3.19.15. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+3.19.17. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.19.18. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.19.19. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \dma_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+3.19.20. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \dma_controller.
+Performed a total of 0 changes.
+
+3.19.21. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+Removed a total of 0 cells.
+
+3.19.22. Executing OPT_SHARE pass.
+
+3.19.23. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+
+3.19.25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+
+3.19.26. Finished OPT passes. (There is nothing left to do.)
+
+3.20. Executing TECHMAP pass (map to technology primitives).
+
+3.20.1. Executing Verilog-2005 frontend: /workspace/scratch/a111ff184d42/local-tools/usr/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/workspace/scratch/a111ff184d42/local-tools/usr/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+3.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $logic_and.
+Using template $paramod$a2e57c5a9e4bd0a0f4647eb8048d708e821846ee\_90_alu for cells of type $alu.
+Using template $paramod$44a13d10af618e7fbe7b9aad2f6151ffcee1e2fa\_90_alu for cells of type $alu.
+Using template $paramod$f14f58a9dc953225774ed36f8cd52bde0fedcb71\_90_alu for cells of type $alu.
+Using template $paramod$d7aca3dc44b07ff19908fb1a3b606577588c15f1\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_or.
+Using template $paramod$c04af8dbf0e5d1d69bbccb2c7bd8a93fc9ef54dc\_90_alu for cells of type $alu.
+Using template $paramod$fbc7873bff55778c0b3173955b7e4bce1d9d6834\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$6412f7f13655de512a17af2c71a87b50b4a57324\_90_alu for cells of type $alu.
+Using template $paramod$6a42b6fefed750f8a1c58eab59479d960557103c\_90_alu for cells of type $alu.
+Using template $paramod$076c9a7a3f037230073fe14dd4865d470cb48917\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $dffe.
+Using template $paramod$050f15daba5036a0512adf25d3c6631f629623f7\_90_alu for cells of type $alu.
+Using template $paramod$54d740639e1393b22262823179ff783ea9f17a35\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $adffe.
+Using template $paramod$bf8e268f26361094a16ad6650df0ad1ca719658a\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000011110 for cells of type $lcu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100001 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100011 for cells of type $lcu.
+Using template $paramod\_90_lcu\WIDTH=32'00000000000000000000000000100000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~3645 debug messages>
+
+3.21. Executing OPT pass (performing simple optimizations).
+
+3.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module dma_controller.
+<suppressed ~2754 debug messages>
+
+3.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\dma_controller'.
+<suppressed ~1083 debug messages>
+Removed a total of 361 cells.
+
+3.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \dma_controller..
+Removed 681 unused cells and 1871 unused wires.
+<suppressed ~682 debug messages>
+
+3.21.5. Finished fast OPT passes.
+
+3.22. Executing HIERARCHY pass (managing design hierarchy).
+
+3.22.1. Analyzing design hierarchy..
+Top module:  \dma_controller
+
+3.22.2. Analyzing design hierarchy..
+Top module:  \dma_controller
+Removed 0 unused modules.
+
+3.23. Printing statistics.
+
+=== dma_controller ===
+
+   Number of wires:               1284
+   Number of wire bits:           4815
+   Number of public wires:          43
+   Number of public wire bits:     772
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4135
+     $_AND_                       1434
+     $_DFFE_PN0P_                  372
+     $_DFFE_PN1P_                   15
+     $_DFFE_PP_                    128
+     $_DFF_PN0_                      5
+     $_MUX_                        616
+     $_NOT_                        302
+     $_OR_                         769
+     $_XOR_                        494
+
+3.24. Executing CHECK pass (checking for obvious problems).
+Checking module dma_controller...
+Found and reported 0 problems.
+
+4. Executing CHECK pass (checking for obvious problems).
+Checking module dma_controller...
+Found and reported 0 problems.
+
+5. Printing statistics.
+
+=== dma_controller ===
+
+   Number of wires:               1284
+   Number of wire bits:           4815
+   Number of public wires:          43
+   Number of public wire bits:     772
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               4135
+     $_AND_                       1434
+     $_DFFE_PN0P_                  372
+     $_DFFE_PN1P_                   15
+     $_DFFE_PP_                    128
+     $_DFF_PN0_                      5
+     $_MUX_                        616
+     $_NOT_                        302
+     $_OR_                         769
+     $_XOR_                        494
+
